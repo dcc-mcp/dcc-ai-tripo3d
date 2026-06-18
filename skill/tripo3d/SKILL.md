@@ -1,29 +1,22 @@
 ---
 name: tripo3d
 description: Create, inspect, and download Tripo text/image/multiview 3D generation tasks.
+license: MIT
+compatibility: "dcc-mcp-core 0.18+"
 metadata:
   dcc-mcp:
     version: v0.1.0
     dcc: python
-    display_name: Tripo3D
-    group: asset.ai.generation
-    default_icon: cube
-    affinity: any
-    marketplace: dcc-ai-tripo3d
+    layer: domain
+    tags:
+      - ai
+      - tripo
+      - tripo3d
+      - 3d-generation
+      - text-to-3d
+      - image-to-3d
+    search-hint: "tripo, tripo3d, text to model, image to model, multiview to model, 3d generation, download generated model"
     tools: tools.yaml
-    execution: sync
-    permissions:
-      - network
-    examples:
-      - "Create a Tripo text-to-model task"
-      - "Create a Tripo image-to-model task from a public image URL"
-      - "Download outputs from a finished Tripo task"
-    contact:
-      name: dcc-mcp team
-      url: https://github.com/dcc-mcp/dcc-ai-tripo3d
-    install:
-      add_source: "dcc-mcp-cli marketplace add dcc-mcp/dcc-ai-tripo3d"
-      then_install: "dcc-mcp-cli marketplace install dcc-ai-tripo3d"
 ---
 
 # Tripo3D
