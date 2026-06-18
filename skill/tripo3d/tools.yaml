@@ -1,0 +1,135 @@
+tools:
+  - name: create_tripo3d_task
+    description: Create a Tripo text, image, or multiview 3D generation task.
+    source_file: scripts/create_tripo3d_task.py
+    execution: sync
+    affinity: any
+    timeout_hint_secs: 30
+    enforce_thread_affinity: true
+    annotations:
+      read_only_hint: false
+      destructive_hint: false
+      idempotent_hint: false
+      open_world_hint: true
+    group: tripo3d
+    input_schema:
+      type: object
+      required: ["task_type"]
+      properties:
+        task_type:
+          type: string
+          enum: ["text_to_model", "image_to_model", "multiview_to_model"]
+        prompt:
+          type: string
+          description: Required for text_to_model.
+        image_url:
+          type: string
+          description: Public image URL for image_to_model.
+        image_urls:
+          type: array
+          items:
+            type: string
+          description: Public image URLs for multiview_to_model.
+        model_version:
+          type: string
+          default: "v2.5-20250123"
+        texture:
+          type: boolean
+          default: true
+        pbr:
+          type: boolean
+          default: true
+        face_limit:
+          type: integer
+        texture_quality:
+          type: string
+          enum: ["standard", "detailed"]
+          default: "standard"
+        geometry_quality:
+          type: string
+          enum: ["standard", "detailed"]
+          default: "standard"
+        smart_low_poly:
+          type: boolean
+          default: false
+        quad:
+          type: boolean
+          default: false
+    output_schema:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        message:
+          type: string
+        task_id:
+          type: string
+        response:
+          type: object
+
+  - name: get_tripo3d_task
+    description: Get Tripo task status and output metadata.
+    source_file: scripts/get_tripo3d_task.py
+    execution: sync
+    affinity: any
+    timeout_hint_secs: 20
+    enforce_thread_affinity: true
+    annotations:
+      read_only_hint: true
+      idempotent_hint: true
+      open_world_hint: true
+    group: tripo3d
+    input_schema:
+      type: object
+      required: ["task_id"]
+      properties:
+        task_id:
+          type: string
+    output_schema:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        message:
+          type: string
+        response:
+          type: object
+
+  - name: download_tripo3d_task
+    description: Download model and preview outputs from a completed Tripo task.
+    source_file: scripts/download_tripo3d_task.py
+    execution: sync
+    affinity: any
+    timeout_hint_secs: 120
+    enforce_thread_affinity: true
+    annotations:
+      read_only_hint: false
+      destructive_hint: false
+      idempotent_hint: false
+      open_world_hint: true
+    group: tripo3d
+    input_schema:
+      type: object
+      required: ["task_id", "output_dir"]
+      properties:
+        task_id:
+          type: string
+        output_dir:
+          type: string
+        fields:
+          type: array
+          items:
+            type: string
+          description: Optional output fields to download, such as model or rendered_image.
+    output_schema:
+      type: object
+      properties:
+        ok:
+          type: boolean
+        message:
+          type: string
+        files:
+          type: array
+          items:
+            type: string
+

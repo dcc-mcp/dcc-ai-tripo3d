@@ -1,0 +1,28 @@
+{
+  "version": "1",
+  "entries": [
+    {
+      "name": "dcc-ai-tripo3d",
+      "description": "Create, inspect, and download Tripo 3D generation tasks",
+      "dcc": [
+        "maya",
+        "blender",
+        "houdini",
+        "3dsmax"
+      ],
+      "tags": [
+        "skills",
+        "ai",
+        "tripo",
+        "3d-generation"
+      ],
+      "version": "0.1.0",
+      "install": {
+        "type": "git",
+        "url": "https://github.com/dcc-mcp/dcc-ai-tripo3d",
+        "ref": "main"
+      }
+    }
+  ]
+}
+
