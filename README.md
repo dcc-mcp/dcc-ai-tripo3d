@@ -1,6 +1,6 @@
 # DCC-MCP Tripo3D
 
-![Workflow showcase](docs/workflow-showcase.png)
+![Workflow showcase](docs/images/dcc-ai-tripo3d-showcase.webp)
 
 Tripo 3D generation tools for DCC-MCP.
 
