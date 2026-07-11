@@ -1,0 +1,7 @@
+runtimes:
+  - name: tripo-api-key
+    type: env_var
+    env: TRIPO_API_KEY
+    description: Tripo OpenAPI credential used for task submission and queries.
+    optional: false
+    guidance: Set TRIPO_API_KEY in the adapter process environment; the skill never creates or stores credentials.

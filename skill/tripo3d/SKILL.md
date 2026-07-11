@@ -17,6 +17,7 @@ metadata:
       - image-to-3d
     search-hint: "tripo, tripo3d, text to model, image to model, multiview to model, 3d generation, download generated model"
     tools: tools.yaml
+    runtimes: runtimes.yaml
 ---
 
 # Tripo3D
