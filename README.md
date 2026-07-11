@@ -1,5 +1,7 @@
 # DCC-MCP Tripo3D
 
+![Workflow showcase](docs/workflow-showcase.png)
+
 Tripo 3D generation tools for DCC-MCP.
 
 The scripts call the Tripo OpenAPI directly with Python stdlib. Set
