@@ -50,7 +50,13 @@ def missing_key_contract() -> None:
     try:
         result = load("get_tripo3d_task").main(task_id="task_test")
         assert not result["success"], result
-        assert "TRIPO_API_KEY" in result["error"]
+        assert result["context"]["error_type"] == "RuntimeError", result
+        if result["error"] == "RuntimeError":
+            assert result["_meta"]["dcc.error"]["type"] == "RuntimeError", result
+            assert result["_meta"]["dcc.error"]["message"] == "TRIPO_API_KEY is not set", result
+        else:
+            # Older Core exposes the exception repr instead of canonical error metadata.
+            assert result["error"] == "RuntimeError('TRIPO_API_KEY is not set')", result
     finally:
         if old:
             os.environ["TRIPO_API_KEY"] = old
