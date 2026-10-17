@@ -14,19 +14,30 @@ users may continue to use the MCP endpoint.
 `dcc-mcp-cli` is the preferred control path for every shell-capable agent. If
 it is missing, ask the user before installing the latest official release:
 
+On Linux/macOS, download and inspect the installer:
+
 ```bash
-# Linux/macOS
 curl -fL https://raw.githubusercontent.com/dcc-mcp/dcc-mcp-core/main/scripts/install-cli.sh -o install-cli.sh
 cat install-cli.sh
-# After reviewing the file:
+```
+
+After completing the inspection and obtaining the user's permission to install:
+
+```bash
 sh ./install-cli.sh
 ```
 
+On Windows PowerShell, download and inspect the installer:
+
 ```powershell
-# Windows PowerShell
 Invoke-WebRequest https://raw.githubusercontent.com/dcc-mcp/dcc-mcp-core/main/scripts/install-cli.ps1 -OutFile .\install-cli.ps1
 Get-Content -Raw .\install-cli.ps1
-# After reviewing the file and subject to the current execution policy:
+```
+
+After completing the inspection and obtaining the user's permission to install,
+run the reviewed local installer under the current execution policy:
+
+```powershell
 & .\install-cli.ps1
 ```
 
@@ -34,7 +45,12 @@ Keep an official build current through the release manifest:
 
 ```bash
 dcc-mcp-cli update check
-dcc-mcp-cli update apply --yes  # only after user confirmation
+```
+
+Only after the user explicitly confirms the update:
+
+```bash
+dcc-mcp-cli update apply --yes
 ```
 
 `update apply` downloads and stages the latest CLI for the next launch. It
