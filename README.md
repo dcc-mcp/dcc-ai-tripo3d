@@ -57,9 +57,11 @@ dcc-mcp-cli call <tool-slug> --require-gateway --agent-session-id "<task-id>" --
 
 If the package skill is not active, call
 `dcc-mcp-cli load-skill <skill-name> --dcc-type <host>`. After the task,
-query `dcc-mcp-cli stats --range 24h --session-id "<task-id>"` and pass only
+query `dcc-mcp-cli stats --range "<task-window>" --session-id "<task-id>"` and pass only
 bounded evidence to the `review_skill_improvement` prompt from
 `dcc-mcp-skills-creator`.
+Choose a supported `--range` covering the full task start-to-review window;
+see `dcc-mcp-cli stats --help`.
 
 
 ![Workflow showcase](docs/images/dcc-ai-tripo3d-showcase.webp)
